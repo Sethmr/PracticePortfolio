@@ -60,12 +60,13 @@
     </div>
 
     <div class="box">
-<pre><code class="language-ruby">n = 0
-while n &lt; 10
-  puts &quot;Hello, #{n}&quot;
-  n = n + 1
-end
-puts &quot;Goodbye&quot;</code></pre>
+<pre><code class="language-ruby">
+puts &quot;Enter degrees in Celsius:&quot;
+celsius = gets.chomp
+fahrenheit = Float(celsius) * 9 / 5 + 32
+puts &quot;#{celsius.to_s}&deg;C converts to #{fahrenheit.to_s}&deg;F&quot;
+
+</code></pre>
     </div>
 
     <br class="clear" />
@@ -81,12 +82,23 @@ puts &quot;Goodbye&quot;</code></pre>
     </div>
 
     <div class="box">
-<pre><code class="language-ruby">n = 0
-while n &lt; 10
-  puts &quot;Hello, #{n}&quot;
-  n = n + 1
+<pre><code class="language-ruby">
+puts &quot;Enter the number to be coverted into its ordinal form:&quot;
+num = gets.chomp.to_i
+last_digit = num % 10
+
+case last_digit
+when 1
+  puts &quot;#{num}st&quot;
+when 2
+  puts &quot;#{num}nd&quot;
+when 3
+  puts &quot;#{num}rd&quot;
+else
+  puts &quot;#{num}th&quot;
 end
-puts &quot;Goodbye&quot;</code></pre>
+
+</code></pre>
     </div>
 
     <br class="clear" />
@@ -101,12 +113,43 @@ puts &quot;Goodbye&quot;</code></pre>
     </div>
 
     <div class="box">
-<pre><code class="language-ruby">n = 0
-while n &lt; 10
-  puts &quot;Hello, #{n}&quot;
-  n = n + 1
+<pre><code class="language-ruby">
+def divisible_by_3?(num)
+  divisible_by_num?(num, 3)
 end
-puts &quot;Goodbye&quot;</code></pre>
+
+def divisible_by_5?(num)
+  divisible_by_num?(num, 5)
+end
+
+def divisible_by_num?(num, divisor)
+  num % divisor == 0
+end
+
+puts &quot;Enter Foobar number count to display:&quot;
+count = gets.chomp.to_i
+
+array = []
+num = 0
+while num != count
+  num += 1
+  divisible_by_3 = divisible_by_3?(num)
+  divisible_by_5 = divisible_by_5?(num)
+
+  if divisible_by_3 &amp;&amp; divisible_by_5
+    array &lt;&lt; &quot;Foobar&quot;
+  elsif divisible_by_3
+    array &lt;&lt; &quot;Foo&quot;
+  elsif divisible_by_5
+    array &lt;&lt; &quot;Bar&quot;
+  else
+    array &lt;&lt; num
+  end
+end
+
+puts &quot;\nFooBar pattern:&quot;
+puts array.join(&quot;, &quot;)
+</code></pre>
     </div>
 
     <br class="clear" />
